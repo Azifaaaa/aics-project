@@ -1,6 +1,6 @@
 /* ============================================================
    CipherShield — Main Stylesheet
-   Professional White Theme
+   Light and dark themes
    ============================================================ */
 
 /* ── Google Font import ─────────────────────────────────── */
@@ -18,10 +18,23 @@
   --primary-dark: #1D4ED8;
   --green:        #16A34A;
   --green-light:  #F0FDF4;
+  --green-border: #BBF7D0;
+  --green-text:   #166534;
   --amber:        #D97706;
   --amber-light:  #FFFBEB;
+  --amber-border: #FDE68A;
+  --amber-text:   #92400E;
   --red:          #DC2626;
   --red-light:    #FEF2F2;
+  --red-border:   #FECACA;
+  --red-text:     #991B1B;
+  --red-hover:    #FEE2E2;
+  --primary-border:#BFDBFE;
+  --primary-text: #1E40AF;
+  --surface-muted:#F8FAFC;
+  --gray-light:   #F1F5F9;
+  --gray-text:    #475569;
+  --table-header: #FAFBFC;
   --shadow-sm:    0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
   --shadow:       0 4px 12px rgba(0,0,0,0.07);
   --shadow-md:    0 8px 24px rgba(0,0,0,0.08);
@@ -29,6 +42,40 @@
   --radius-sm:    6px;
   --sidebar-w:    240px;
   --transition:   all 0.2s ease;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg:           #111827;
+  --surface:      #1F2937;
+  --border:       #374151;
+  --text:         #F3F4F6;
+  --text-muted:   #9CA3AF;
+  --primary:      #60A5FA;
+  --primary-light:#1E3A5F;
+  --primary-dark: #3B82F6;
+  --green:        #4ADE80;
+  --green-light:  #163426;
+  --green-border: #276749;
+  --green-text:   #86EFAC;
+  --amber:        #FBBF24;
+  --amber-light:  #3B2E16;
+  --amber-border: #785B1B;
+  --amber-text:   #FCD34D;
+  --red:          #F87171;
+  --red-light:    #3F2228;
+  --red-border:   #7F343B;
+  --red-text:     #FCA5A5;
+  --red-hover:    #542B31;
+  --primary-border:#31527A;
+  --primary-text: #BFDBFE;
+  --surface-muted:#273449;
+  --gray-light:   #273449;
+  --gray-text:    #CBD5E1;
+  --table-header: #273449;
+  --shadow-sm:    0 1px 3px rgba(0,0,0,0.22), 0 1px 2px rgba(0,0,0,0.18);
+  --shadow:       0 4px 12px rgba(0,0,0,0.24);
+  --shadow-md:    0 8px 24px rgba(0,0,0,0.32);
 }
 
 /* ── Reset & Base ───────────────────────────────────────── */
@@ -260,7 +307,7 @@ a:hover { text-decoration: underline; }
 .stat-icon.green  { background: var(--green-light);   color: var(--green);  }
 .stat-icon.amber  { background: var(--amber-light);   color: var(--amber);  }
 .stat-icon.red    { background: var(--red-light);     color: var(--red);    }
-.stat-icon.gray   { background: #F1F5F9;              color: #64748B;       }
+.stat-icon.gray   { background: var(--gray-light);    color: var(--text-muted); }
 
 .stat-value {
   font-size: 26px;
@@ -306,9 +353,9 @@ a:hover { text-decoration: underline; }
 .btn-danger {
   background: var(--red-light);
   color: var(--red);
-  border: 1.5px solid #FECACA;
+  border: 1.5px solid var(--red-border);
 }
-.btn-danger:hover { background: #FEE2E2; text-decoration: none; }
+.btn-danger:hover { background: var(--red-hover); text-decoration: none; }
 
 .btn-sm { padding: 6px 12px; font-size: 12.5px; }
 
@@ -328,7 +375,7 @@ a:hover { text-decoration: underline; }
 .badge-amber  { background: var(--amber-light);  color: var(--amber); }
 .badge-red    { background: var(--red-light);    color: var(--red);   }
 .badge-blue   { background: var(--primary-light);color: var(--primary); }
-.badge-gray   { background: #F1F5F9;             color: #475569; }
+.badge-gray   { background: var(--gray-light);    color: var(--gray-text); }
 
 /* ── Analyze page ───────────────────────────────────────── */
 .analyze-layout {
@@ -417,10 +464,10 @@ a:hover { text-decoration: underline; }
   border-bottom: none;
 }
 
-.result-header.ham     { background: var(--green-light); border-color: #BBF7D0; }
-.result-header.spam    { background: var(--amber-light); border-color: #FDE68A; }
-.result-header.phishing{ background: var(--red-light);  border-color: #FECACA; }
-.result-header.error   { background: #F1F5F9;           border-color: var(--border); }
+.result-header.ham     { background: var(--green-light); border-color: var(--green-border); }
+.result-header.spam    { background: var(--amber-light); border-color: var(--amber-border); }
+.result-header.phishing{ background: var(--red-light);  border-color: var(--red-border); }
+.result-header.error   { background: var(--gray-light); border-color: var(--border); }
 
 .result-icon {
   width: 48px; height: 48px;
@@ -430,10 +477,10 @@ a:hover { text-decoration: underline; }
   flex-shrink: 0;
 }
 
-.result-icon.ham     { background: var(--green-light); color: var(--green); border: 2px solid #86EFAC; }
-.result-icon.spam    { background: var(--amber-light); color: var(--amber); border: 2px solid #FCD34D; }
-.result-icon.phishing{ background: var(--red-light);   color: var(--red);   border: 2px solid #FCA5A5; }
-.result-icon.error   { background: #F1F5F9; color: #64748B; border: 2px solid var(--border); }
+.result-icon.ham     { background: var(--green-light); color: var(--green); border: 2px solid var(--green-border); }
+.result-icon.spam    { background: var(--amber-light); color: var(--amber); border: 2px solid var(--amber-border); }
+.result-icon.phishing{ background: var(--red-light);   color: var(--red);   border: 2px solid var(--red-border); }
+.result-icon.error   { background: var(--gray-light); color: var(--text-muted); border: 2px solid var(--border); }
 
 .result-label {
   font-size: 20px;
@@ -481,17 +528,17 @@ a:hover { text-decoration: underline; }
   font-weight: 500;
 }
 
-.url-indicator.present { background: #FEF2F2; color: #991B1B; border: 1px solid #FECACA; }
-.url-indicator.absent  { background: #F0FDF4; color: #166534; border: 1px solid #BBF7D0; }
-.url-indicator.neutral { background: #F8FAFC; color: #475569; border: 1px solid var(--border); }
+.url-indicator.present { background: var(--red-light); color: var(--red-text); border: 1px solid var(--red-border); }
+.url-indicator.absent  { background: var(--green-light); color: var(--green-text); border: 1px solid var(--green-border); }
+.url-indicator.neutral { background: var(--surface-muted); color: var(--gray-text); border: 1px solid var(--border); }
 
 .disclaimer-box {
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
+  background: var(--amber-light);
+  border: 1px solid var(--amber-border);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
   font-size: 12.5px;
-  color: #92400E;
+  color: var(--amber-text);
   display: flex;
   gap: 8px;
   align-items: flex-start;
@@ -555,7 +602,7 @@ a:hover { text-decoration: underline; }
   padding: 10px 14px;
   text-align: left;
   border-bottom: 1px solid var(--border);
-  background: #FAFBFC;
+  background: var(--table-header);
 }
 
 .history-table td {
@@ -710,11 +757,11 @@ a:hover { text-decoration: underline; }
 /* ── Tooltip-like info box ───────────────────────────────── */
 .info-box {
   background: var(--primary-light);
-  border: 1px solid #BFDBFE;
+  border: 1px solid var(--primary-border);
   border-radius: var(--radius-sm);
   padding: 12px 14px;
   font-size: 13px;
-  color: #1E40AF;
+  color: var(--primary-text);
   display: flex;
   gap: 8px;
 }
@@ -764,8 +811,8 @@ a:hover { text-decoration: underline; }
 
 /* ── Model not loaded warning ────────────────────────────── */
 .model-warning {
-  background: #FFFBEB;
-  border: 1px solid #FDE68A;
+  background: var(--amber-light);
+  border: 1px solid var(--amber-border);
   border-radius: var(--radius-sm);
   padding: 14px 16px;
   display: flex;
@@ -773,7 +820,7 @@ a:hover { text-decoration: underline; }
   gap: 10px;
   margin-bottom: 20px;
   font-size: 13.5px;
-  color: #92400E;
+  color: var(--amber-text);
 }
 
 .model-warning i { font-size: 18px; flex-shrink: 0; margin-top: 1px; }

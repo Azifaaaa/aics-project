@@ -96,7 +96,7 @@ function showError(msg) {
     <div class="result-header error">
       <div class="result-icon error"><i class="bi bi-x-circle"></i></div>
       <div>
-        <div class="result-label" style="color:#64748B">Error</div>
+        <div class="result-label" style="color:var(--text-muted)">Error</div>
         <div style="font-size:13px;color:var(--text-muted)">${escHtml(msg)}</div>
       </div>
     </div>
@@ -129,7 +129,7 @@ function showResult(data, originalMessage) {
 
   // Detected URLs
   const urlList = (data.detected_urls || []).map(u =>
-    `<code style="font-size:11.5px;background:#F1F5F9;padding:2px 6px;border-radius:4px;word-break:break-all">${escHtml(u)}</code>`
+    `<code style="font-size:11.5px;background:var(--gray-light);padding:2px 6px;border-radius:4px;word-break:break-all">${escHtml(u)}</code>`
   ).join('<br>');
 
   const html = `

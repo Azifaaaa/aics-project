@@ -165,15 +165,15 @@ function buildEvalSummary(evalRes) {
 
   el.innerHTML = `
     <div style="display:flex;gap:16px;flex-wrap:wrap;margin-bottom:16px">
-      <div style="background:var(--primary-light);border:1px solid #BFDBFE;border-radius:var(--radius-sm);padding:12px 20px;text-align:center">
+      <div style="background:var(--primary-light);border:1px solid var(--primary-border);border-radius:var(--radius-sm);padding:12px 20px;text-align:center">
         <div style="font-size:22px;font-weight:700;color:var(--primary)">${e.accuracy ? (e.accuracy*100).toFixed(1)+'%' : '—'}</div>
         <div style="font-size:11.5px;color:var(--text-muted)">Accuracy</div>
       </div>
-      <div style="background:var(--primary-light);border:1px solid #BFDBFE;border-radius:var(--radius-sm);padding:12px 20px;text-align:center">
+      <div style="background:var(--primary-light);border:1px solid var(--primary-border);border-radius:var(--radius-sm);padding:12px 20px;text-align:center">
         <div style="font-size:22px;font-weight:700;color:var(--primary)">${e.macro_f1 ? e.macro_f1.toFixed(4) : '—'}</div>
         <div style="font-size:11.5px;color:var(--text-muted)">Macro F1</div>
       </div>
-      <div style="background:var(--primary-light);border:1px solid #BFDBFE;border-radius:var(--radius-sm);padding:12px 20px;text-align:center">
+      <div style="background:var(--primary-light);border:1px solid var(--primary-border);border-radius:var(--radius-sm);padding:12px 20px;text-align:center">
         <div style="font-size:22px;font-weight:700;color:var(--primary)">${evalRes.best_model || '—'}</div>
         <div style="font-size:11.5px;color:var(--text-muted)">Best Model</div>
       </div>
