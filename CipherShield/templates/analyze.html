@@ -1,0 +1,112 @@
+{% extends "index.html" %}
+{% set active_page = "analyze" %}
+{% block page_title %}Analyze Message{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Analyze Message</h1>
+  <p>Paste or type any SMS message below to classify it as HAM, SPAM or PHISHING.</p>
+</div>
+
+<!-- Model warning (injected by JS if model not loaded) -->
+<div class="model-warning" id="modelWarning" style="display:none">
+  <i class="bi bi-exclamation-triangle-fill"></i>
+  <div>
+    <strong>Model not trained.</strong>
+    Run <code>python retrain.py</code> to train the model, then refresh this page.
+  </div>
+</div>
+
+<div class="analyze-layout">
+  <!-- Left: Input -->
+  <div>
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title"><i class="bi bi-chat-left-text"></i> SMS Message Input</div>
+
+      <textarea
+        id="messageInput"
+        class="message-textarea"
+        placeholder="Paste or type an SMS message here…"
+        maxlength="2000"
+        rows="8"
+        oninput="updateCharCounter()"
+      ></textarea>
+
+      <div class="char-counter" id="charCounter">0 / 2000</div>
+
+      <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+        <button class="btn btn-primary" id="analyzeBtn" onclick="analyzeMessage()">
+          <i class="bi bi-search"></i> Analyze Message
+        </button>
+        <button class="btn btn-outline" onclick="clearInput()">
+          <i class="bi bi-x-circle"></i> Clear
+        </button>
+      </div>
+    </div>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer-box">
+      <i class="bi bi-info-circle-fill" style="flex-shrink:0;margin-top:1px"></i>
+      <span>
+        Machine-learning predictions are <strong>not guarantees of safety.</strong>
+        Never share your password, OTP, banking PIN or sensitive information based only on this result.
+      </span>
+    </div>
+  </div>
+
+  <!-- Right: Examples + Result -->
+  <div>
+    <!-- Example messages -->
+    <div class="card" id="examplesCard" style="margin-bottom:20px">
+      <div class="card-title"><i class="bi bi-collection"></i> Example Messages</div>
+      <div class="examples-list">
+        <button class="example-pill" onclick="loadExample(0)">
+          <i class="bi bi-check-circle text-success"></i>
+          <span>Legitimate bank transaction notification</span>
+        </button>
+        <button class="example-pill" onclick="loadExample(1)">
+          <i class="bi bi-shield-exclamation" style="color:var(--red)"></i>
+          <span>Fake KYC update request (phishing)</span>
+        </button>
+        <button class="example-pill" onclick="loadExample(2)">
+          <i class="bi bi-shield-exclamation" style="color:var(--red)"></i>
+          <span>UPI collect-request scam</span>
+        </button>
+        <button class="example-pill" onclick="loadExample(3)">
+          <i class="bi bi-shield-exclamation" style="color:var(--red)"></i>
+          <span>Courier delivery phishing</span>
+        </button>
+        <button class="example-pill" onclick="loadExample(4)">
+          <i class="bi bi-check-circle text-success"></i>
+          <span>Normal college notification</span>
+        </button>
+        <button class="example-pill" onclick="loadExample(5)">
+          <i class="bi bi-exclamation-circle" style="color:var(--amber)"></i>
+          <span>Fake lottery notification (spam)</span>
+        </button>
+        <button class="example-pill" onclick="loadExample(6)">
+          <i class="bi bi-shield-exclamation" style="color:var(--red)"></i>
+          <span>IP-based suspicious URL</span>
+        </button>
+        <button class="example-pill" onclick="loadExample(7)">
+          <i class="bi bi-check-circle text-success"></i>
+          <span>Legitimate message with URL</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading spinner -->
+    <div class="spinner-wrap" id="spinnerWrap">
+      <div class="spinner"></div>
+      <span style="font-size:13.5px;color:var(--text-muted)">Analysing message…</span>
+    </div>
+
+    <!-- Result panel -->
+    <div class="result-panel" id="resultPanel"></div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/analyze.js') }}"></script>
+{% endblock %}

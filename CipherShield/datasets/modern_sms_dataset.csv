@@ -1,0 +1,119 @@
+message,label,category,contains_url,source_type
+"Dear Customer, your SBI account has been SUSPENDED due to incomplete KYC. Update immediately at http://sbi-kyc-verify.test/update or your account will be blocked within 24 hours.",phishing,banking_scam,True,synthetic
+"URGENT: Your HDFC Bank debit card ending 4821 has been BLOCKED. To unblock, share your card details and OTP at http://hdfc-unblock.test",phishing,banking_scam,True,synthetic
+"Alert: Your PAN card linked to your bank account is unverified. Click http://pan-verify-india.test to verify now or face account suspension.",phishing,banking_scam,True,synthetic
+"Your Axis Bank account will be permanently closed in 48 hours if KYC is not updated. Call 9876543210 or visit http://axisbank-kyc.test",phishing,banking_scam,True,synthetic
+"ICICI Bank Security Alert: Suspicious login detected on your account. Confirm your identity by sharing OTP sent to your mobile. Reply now.",phishing,otp_scam,False,synthetic
+"Dear user, your bank account has been compromised. To secure it immediately share your 6 digit OTP with our executive. Do not delay.",phishing,otp_scam,False,synthetic
+"Your UPI transaction of Rs.5000 to Paytm has FAILED. To reverse and get refund click http://upi-refund-claim.test immediately.",phishing,upi_scam,True,synthetic
+"Congratulations! You have received a cashback of Rs.2500 in your UPI account. Claim it now at http://upi-cashback-india.test before it expires.",phishing,upi_scam,True,synthetic
+"ALERT: Someone has sent you a collect request of Rs.10000 on UPI. Approve it at http://upi-request.test to receive your money.",phishing,upi_scam,True,synthetic
+"Your PhonePe account shows an unauthorized transaction. To reverse, approve the QR code sent to your registered number immediately.",phishing,upi_scam,False,synthetic
+"Rs.15000 refund from Flipkart is pending in your account. Share your UPI PIN with our agent to process the refund. Call 8123456789.",phishing,upi_scam,False,synthetic
+"Your India Post parcel could not be delivered due to incomplete address. Pay Rs.35 delivery fee at http://indiapost-redeliver.test",phishing,courier_scam,True,synthetic
+"DHL Express: Your shipment #IN8823441 is held at customs. Pay clearance fee of Rs.499 at http://dhl-customs-india.test to release.",phishing,courier_scam,True,synthetic
+"Your Amazon order could not be delivered. Update your delivery address within 24hrs at http://amazon-delivery-update.test",phishing,courier_scam,True,synthetic
+"BLUEDART: Parcel awaiting your collection. Confirm delivery slot and address at http://bluedart-track.test urgently.",phishing,courier_scam,True,synthetic
+"India Post notification: package returned to sender. Redeliver by paying Rs.50 at http://indiapost-redelivery.test",phishing,courier_scam,True,synthetic
+"Your Aadhaar card is about to expire. Update your biometrics immediately at http://aadhaar-update.test before service disruption.",phishing,government_scam,True,synthetic
+"UIDAI Notice: Your Aadhaar has been linked to suspicious activity. Call our helpline 1800-AADHAAR or visit http://uidai-verify.test",phishing,government_scam,True,synthetic
+"You are eligible for PM Kisan Yojana benefit of Rs.6000. Register now at http://pmkisan-benefit.test using your Aadhaar.",phishing,government_scam,True,synthetic
+"Income Tax Dept: You have an unclaimed refund of Rs.18500. Verify your bank details at http://incometax-refund.test to receive it.",phishing,government_scam,True,synthetic
+"Your EPF account has been deactivated. Reactivate by submitting Aadhaar and PAN at http://epfo-activate.test within 72 hours.",phishing,government_scam,True,synthetic
+"CONGRATULATIONS! You have WON Rs.50 Lakh in KBC Lottery 2024! To claim prize send your name, DOB and bank details to claim@kbc-lottery.test",phishing,lottery_scam,False,synthetic
+"You are selected for TATA Mega Prize Draw! Claim your Rs.25 Lakh prize by calling 9988776655. Limited time offer.",phishing,lottery_scam,False,synthetic
+"Work from home and earn Rs.50000/month. No experience required. Send your details to jobs@wfh-income.test to start today.",phishing,job_scam,False,synthetic
+"URGENT JOB OFFER: Google India is hiring work-from-home employees. Rs.80000 monthly. Register at http://google-wfh-india.test",phishing,job_scam,True,synthetic
+"Your WhatsApp account has been reported. To avoid suspension verify identity at http://whatsapp-verify.test within 12 hours.",phishing,account_scam,True,synthetic
+"Facebook Security: Your account has been flagged. Click http://fb-secure-login.test to restore access before permanent deletion.",phishing,account_scam,True,synthetic
+"Your Gmail password was recently changed from an unknown device. If not you, reset immediately: http://google-account-reset.test",phishing,account_scam,True,synthetic
+"HDFC NetBanking: Your session expired. Login again at http://hdfcbank-netbanking.test to continue. Your account security is at risk.",phishing,banking_scam,True,synthetic
+"SBI YONO: Your YONO account will be deactivated. Update now at http://sbi-yono-verify.test urgently. Customer Support.",phishing,banking_scam,True,synthetic
+"Your UPI ID has been suspended due to 3 failed transactions. Reactivate by paying Rs.1 at http://upi-reactivate.test",phishing,upi_scam,True,synthetic
+"Paytm: Your KYC is incomplete. Account will be limited. Complete KYC at http://paytm-kyc-india.test urgently.",phishing,upi_scam,True,synthetic
+"Jio recharge of Rs.299 has FAILED. Your number will be deactivated. Recharge now at http://jio-recharge-now.test",phishing,other_scam,True,synthetic
+"You have an uncollected Amazon gift card worth Rs.5000. Verify identity at http://amazon-gift-claim.test to receive it.",phishing,other_scam,True,synthetic
+"Alert: IP address 192.168.1.1 from Russia attempted login to your SBI account. Verify now: http://203.0.113.45/sbi-verify",phishing,banking_scam,True,synthetic
+"Urgent: Your HDFC loan EMI is overdue. Pay immediately via bit.ly/hdfc-emi-pay or face legal action and credit score impact.",phishing,banking_scam,True,synthetic
+"Your Aadhaar-linked mobile number will be deactivated unless verified. Update at http://sbi.co.in.aadhaar-update.test now.",phishing,government_scam,True,synthetic
+"Free recharge! Get Rs.100 free talk time by completing survey at http://tinyurl.com/free-recharge-india",phishing,other_scam,True,synthetic
+"You've been selected for exclusive Netflix free subscription! Claim at http://netflix-free-india.test before midnight.",phishing,other_scam,True,synthetic
+"Customer care executive calling: Your policy is due for renewal. Share your policy number and OTP to extend coverage instantly.",phishing,other_scam,False,synthetic
+"Tech Support: Your computer has been infected with virus. Call 1800-tech-help immediately. Do not shutdown your device.",phishing,tech_support_scam,False,synthetic
+"Microsoft Windows: Your license has expired. Buy renewal at http://windows-license-india.test to avoid data loss.",phishing,tech_support_scam,True,synthetic
+"Paytm Mall: Order #PM7823 delivery failed. Reattempt by paying Rs.49 at http://paytmmall-redeliver.test",phishing,courier_scam,True,synthetic
+"[IRCTC] Your train ticket booking failed but payment was deducted. Claim refund at http://irctc-refund.test urgently.",phishing,other_scam,True,synthetic
+"Sarkari Yojana: Your application for free gas cylinder has been approved! Collect subsidy amount by clicking http://ujjwala-claim.test",phishing,government_scam,True,synthetic
+"Your credit card bill of Rs.12000 is overdue. To waive penalty charges, call our recovery agent and share OTP to verify.",phishing,banking_scam,False,synthetic
+"Special offer: 50% off on all medicines at http://pharma-deals.test Enter code HEALTH50 and get medicines delivered free.",spam,promotional,True,synthetic
+"WIN WIN WIN! Earn Rs.5000 daily from home by just watching videos. Register FREE at http://earn-daily-india.test No investment!",spam,promotional,True,synthetic
+"Get India's cheapest personal loan at 0.5% interest. Apply online now. SMS LOAN to 56789 or visit http://instacash-loans.test",spam,financial_promotion,True,synthetic
+"LIMITED OFFER: Buy 1 get 1 FREE on all Dominos pizzas today only. Use code BOGO at checkout. Order: http://dominos.com",spam,food_promotion,True,synthetic
+"Exciting new investment opportunity! Guaranteed 20% monthly returns. Zero risk. Join our telegram group now for free tips.",spam,investment_spam,False,synthetic
+"Get FREE DEMAT account with ZERO brokerage. Open now and get Rs.500 bonus. Register at http://stockbroker-india.test",spam,financial_promotion,True,synthetic
+"SALE ALERT: Myntra End of Reason Sale! Up to 80% off on top brands. Shop now before stocks run out. http://myntra.com",spam,shopping_promotion,True,synthetic
+"Reminder: Your vehicle insurance expires next week. Renew now and save 25% at http://insurance-compare.test",spam,insurance_spam,True,synthetic
+"Earn extra income by sharing our app! Get Rs.50 per referral. Join 10 lakh members. Download at http://refer-earn-app.test",spam,referral_spam,True,synthetic
+"Free CIBIL score check! Know your credit score instantly. No documents required. Click http://cibil-free.test",spam,financial_promotion,True,synthetic
+"Today only: Get 3 months of Hotstar Premium FREE. Limited slots! Activate at http://hotstar-free.test",spam,entertainment_spam,True,synthetic
+"Diwali Special: Buy gold jewellery at special prices. EMI available. Visit your nearest Tanishq store or http://tanishq.co.in",spam,shopping_promotion,True,synthetic
+"Your Airtel number is eligible for upgrade to 5G SIM. Book your slot: SMS 5G to 121 or visit http://airtel.in",spam,telecom_promotion,True,synthetic
+"Exciting job openings in top MNCs! 3-15 LPA. Register your profile at http://jobs-india.test FREE before deadline.",spam,job_spam,True,synthetic
+"Get upto 60% discount on health insurance. Compare 50+ plans in 2 minutes. No medical check required. http://healthinsure.test",spam,insurance_spam,True,synthetic
+"Special Holi offer! 40% off sitewide. Use code HOLI40. Free delivery on orders above Rs.499. Shop at http://fashionbrand.test",spam,shopping_promotion,True,synthetic
+"Missed call loan approved! Get Rs.50000 instantly in your account. No collateral. Apply: SMS LOAN to 9876543210",spam,financial_promotion,False,synthetic
+"Your electricity bill for October is Rs.1,243. Due date: 25 October 2024. Pay online at https://bsesdelhi.com or visit nearest office.",ham,utility_bill,True,synthetic
+"Your OTP for SBI Internet Banking login is 847263. This OTP is valid for 10 minutes. Do not share with anyone.",ham,legitimate_otp,False,synthetic
+"Hi Rahul, your appointment with Dr. Sharma is confirmed for tomorrow 3pm at City Hospital. Reply CANCEL to cancel.",ham,appointment,False,synthetic
+"Your Flipkart order #OD112345678 has been shipped. Estimated delivery: 3-4 days. Track at https://flipkart.com/track",ham,delivery_update,True,synthetic
+"Zomato: Your order from Pizza Hut is out for delivery! Estimated arrival: 25 mins. Track live at https://zomato.com",ham,delivery_update,True,synthetic
+"Amount Rs.500 debited from your HDFC account ending 1234 on 15-Oct. Available balance: Rs.12,450. Not you? Call 18002726161.",ham,bank_transaction,False,synthetic
+"Your UPI payment of Rs.350 to BIGBASKET was successful. Transaction ID: UPI29384756. For support contact PhonePe.",ham,upi_transaction,False,synthetic
+"Dear student, the exam schedule for November has been uploaded on the college portal. Please check https://example.com/portal",ham,college_notification,True,synthetic
+"Reminder: Your car service appointment is at 10am tomorrow at Maruti Suzuki True Value. Contact: 044-23456789",ham,appointment,False,synthetic
+"IRCTC: Your train ticket for Rajdhani Express on 20-Nov (PNR: 4567891234) has been confirmed. Seat: S4/32. Bon voyage!",ham,travel_booking,False,synthetic
+"Amazon: Your order #402-8734562 for Noise Smartwatch has been delivered. Rate your experience at https://amazon.in",ham,delivery_update,True,synthetic
+"Monthly statement for October is ready. Total spend Rs.8,234. Available limit Rs.41,766. View at https://hdfcbank.com",ham,bank_statement,True,synthetic
+"Paytm: Received Rs.200 from Priya Sharma (9876543210). Reference ID PAY8273641. Check your Paytm wallet.",ham,upi_transaction,False,synthetic
+"Your EPF monthly contribution of Rs.1,800 has been credited for October 2024. PF Account: MH/12345/789",ham,financial_notification,False,synthetic
+"Jio: Your monthly recharge of Rs.239 is successful. Validity: 28 days. Enjoy unlimited calls and 1.5GB/day data.",ham,telecom_notification,False,synthetic
+"Canara Bank: Your FD of Rs.50,000 has matured. Amount credited to your savings account. Contact branch for renewal.",ham,bank_notification,False,synthetic
+"Mumbai University: Internal assessment marks have been updated. Check your marks at https://mu.ac.in/results",ham,college_notification,True,synthetic
+"Swiggy: Your order for Biryani from Paradise is confirmed! Order #SW93847263. Delivery in 35 mins.",ham,food_order,False,synthetic
+"Your GST return for Q2 has been filed successfully. ARN: AA01234567891234. Download acknowledgement at https://gst.gov.in",ham,government_notification,True,synthetic
+"Class test on Monday has been rescheduled to Wednesday. Please inform all batch mates. Regards, Prof. Mehta",ham,college_notification,False,synthetic
+"NEFT successful: Rs.25,000 credited to Axis Bank account ending 5678 at 2:34pm. Ref: NEFT293847561.",ham,bank_transaction,False,synthetic
+"MakeMyTrip: Booking confirmed for Hotel Taj Mumbai (2 nights). Check-in: 25 Nov. Booking ID: HTLMUM8273.",ham,travel_booking,False,synthetic
+"Reminder: Library book due date is 30th November. Renew online at http://example.com/library or visit the counter.",ham,library_reminder,True,synthetic
+"Your Swiggy Instamart order has arrived. 7 items delivered. Enjoy your groceries!",ham,delivery_update,False,synthetic
+"Transaction Alert: Rs.1500 debited via UPI to ELECTRICITY BOARD. If unauthorized call 1800111109 immediately.",ham,bank_transaction,False,synthetic
+"Dear Parent, your ward Ananya has been selected for the state-level science exhibition. Congratulations! - Principal",ham,school_notification,False,synthetic
+"Your DigiLocker has a new document: Marksheet Class 12 from CBSE. View at https://digilocker.gov.in",ham,government_notification,True,synthetic
+"BookMyShow: 2 tickets for Dune: Part Two on Saturday 8pm, PVR Phoenix confirmed. Booking ID: BMS7382910.",ham,entertainment_booking,False,synthetic
+"PhonePe: Paid Rs.4,500 to MakeMyTrip. Transaction ID: T2309847561. Contact support if any issues.",ham,upi_transaction,False,synthetic
+"Your Airtel broadband bill of Rs.999 is due on 1st December. Pay now at https://airtel.in to avoid disconnection.",ham,utility_bill,True,synthetic
+"Good morning! Just wanted to check if you are free this weekend? Planning a small get-together at home.",ham,personal_message,False,synthetic
+"Can you send me the notes from yesterday's ML lecture? Missed it because of the placement drive.",ham,personal_message,False,synthetic
+"Dinner tonight? Or are you still working late?",ham,personal_message,False,synthetic
+"Mom says call her when you get home. She tried calling but you didn't pick up.",ham,personal_message,False,synthetic
+"Your Zepto delivery is on the way. Expected delivery in 10 minutes.",ham,delivery_update,False,synthetic
+"Reminder: Gym session at 7am tomorrow. Don't skip leg day!",ham,personal_message,False,synthetic
+"I've shared the project report on Google Drive. Please review and add your section by tonight.",ham,college_notification,False,synthetic
+"Yaar aaj college band hai kya? Professor ne message kiya kya tumhe?",ham,personal_message,False,synthetic
+"Bhai Netflix ka password kya hai? Mera account logout ho gaya.",ham,personal_message,False,synthetic
+"Seminar registration deadline is 5th Dec. Register ASAP at http://example.com/seminar",ham,college_notification,True,synthetic
+"Your SBI account has received Rs.10,000 from SALARY CREDIT. Avail bal: Rs.23,500. -State Bank of India",ham,bank_transaction,False,synthetic
+"Cashback of Rs.75 credited to your Paytm wallet for recharge done on 12-Oct. Valid for 30 days.",ham,upi_transaction,False,synthetic
+"This is a reminder that your car's annual PUC certificate expires on 15 Nov. Renew at nearest PUC centre.",ham,vehicle_reminder,False,synthetic
+"Congratulations! You cleared the interview round. HR will contact you within 2 days. - ABC Technologies HR",ham,job_notification,False,synthetic
+"Your COVID booster vaccination slot is confirmed for 18 Nov at 11am, PHC Ward 7. Bring your CoWIN certificate.",ham,health_notification,False,synthetic
+"Exciting FLAT 30% off on courses! Upgrade your skills with Coursera. Use code INDIA30 at http://coursera.org",spam,education_promotion,True,synthetic
+"Refer your friends to Swiggy and earn Rs.100 for each successful referral. No limit on earnings! Refer now.",spam,referral_spam,False,synthetic
+"Get 2X rewards on all HDFC credit card spends this weekend. Shop at partner stores for bonus points.",spam,credit_card_promotion,False,synthetic
+"Apply for HDFC Bank Regalia Credit Card and get 5000 reward points. Apply online: http://hdfcbank.com/cards",spam,financial_promotion,True,synthetic
+"Flash sale: Up to 90% off on top brands at Amazon Great Indian Festival. Starts midnight tonight! http://amazon.in",spam,shopping_promotion,True,synthetic
+"Paytm Gold offer: Invest in digital gold from just Rs.1. Get 3% extra on first investment. T&C apply.",spam,financial_promotion,False,synthetic
+"Win iPhone 15 Pro! Complete 3 easy tasks on our app and enter lucky draw. Download: http://prizeapp.test",spam,lottery_spam,True,synthetic
+"Your CIBIL score is 750+. You are pre-approved for a personal loan up to Rs.5 Lakhs. Apply now.",spam,financial_promotion,False,synthetic
+"Byju's Live Classes starting this week. Enroll your child now for free demo. Limited seats: http://byjus.com",spam,education_promotion,True,synthetic
+"Save big on electricity! Get solar panels installed at zero upfront cost. EMI from Rs.1500/month. Know more.",spam,other_promotion,False,synthetic

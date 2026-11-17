@@ -1,0 +1,137 @@
+{% extends "index.html" %}
+{% set active_page = "history" %}
+{% block page_title %}Detection History{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Detection History</h1>
+  <p>Recent analysis records. Message text is not stored — only classification metadata.</p>
+</div>
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+  <div class="filter-bar" id="filterBar">
+    <button class="filter-btn active-all" id="filterAll" onclick="filterHistory('all')">All</button>
+    <button class="filter-btn" id="filterHam" onclick="filterHistory('ham')">
+      <i class="bi bi-check-circle"></i> HAM
+    </button>
+    <button class="filter-btn" id="filterSpam" onclick="filterHistory('spam')">
+      <i class="bi bi-exclamation-circle"></i> SPAM
+    </button>
+    <button class="filter-btn" id="filterPhishing" onclick="filterHistory('phishing')">
+      <i class="bi bi-shield-exclamation"></i> PHISHING
+    </button>
+  </div>
+  <button class="btn btn-danger btn-sm" onclick="clearHistory()" id="clearBtn">
+    <i class="bi bi-trash"></i> Clear History
+  </button>
+</div>
+
+<div class="card" id="historyCard">
+  <div id="historyContent">
+    <div class="empty-state">
+      <i class="bi bi-clock-history"></i>
+      <h3>Loading history…</h3>
+      <p>Please wait.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Privacy notice -->
+<div class="info-box" style="margin-top:20px">
+  <i class="bi bi-lock-fill" style="flex-shrink:0;margin-top:1px"></i>
+  <div>
+    <strong>Privacy:</strong> Only classification metadata (label, confidence, URL count, timestamp)
+    is stored. No message text is saved. Use the <em>Clear History</em> button to delete all records.
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let allRecords = [];
+let currentFilter = 'all';
+
+async function loadHistory() {
+  const res = await fetch('/api/history').then(r => r.json()).catch(() => ({enabled:true, records:[]}));
+
+  if (!res.enabled) {
+    document.getElementById('historyContent').innerHTML = `
+      <div class="empty-state">
+        <i class="bi bi-toggle-off"></i>
+        <h3>History is disabled</h3>
+        <p>Set <code>HISTORY_ENABLED = True</code> in <code>config.py</code> to enable.</p>
+      </div>`;
+    return;
+  }
+
+  allRecords = res.records || [];
+  renderHistory(allRecords);
+}
+
+function renderHistory(records) {
+  const el = document.getElementById('historyContent');
+  if (!records.length) {
+    el.innerHTML = `
+      <div class="empty-state">
+        <i class="bi bi-inbox"></i>
+        <h3>No records found</h3>
+        <p>Analyse some messages to see history here.</p>
+        <a href="/analyze" class="btn btn-primary" style="margin-top:14px">
+          <i class="bi bi-search"></i> Analyze Message
+        </a>
+      </div>`;
+    return;
+  }
+
+  const rows = records.map(r => {
+    const badgeClass = r.label === 'ham' ? 'badge-green' : r.label === 'spam' ? 'badge-amber' : 'badge-red';
+    const icon = r.label === 'ham' ? 'check-circle' : r.label === 'spam' ? 'exclamation-circle' : 'shield-exclamation';
+    const conf = r.confidence != null ? (r.confidence * 100).toFixed(1) + '%' : 'N/A';
+    const urlBadge = r.has_url
+      ? `<span class="badge badge-red" style="font-size:10px"><i class="bi bi-link-45deg"></i> URL</span>`
+      : `<span class="badge badge-gray" style="font-size:10px">No URL</span>`;
+    return `<tr data-label="${r.label}">
+      <td><span class="badge ${badgeClass}"><i class="bi bi-${icon}"></i> ${r.label.toUpperCase()}</span></td>
+      <td>${conf}</td>
+      <td>${urlBadge} ${r.url_count > 0 ? `(${r.url_count})` : ''}</td>
+      <td style="color:var(--text-muted);font-size:12.5px">${r.timestamp || '—'}</td>
+      <td style="color:var(--text-muted);font-size:12px">${r.model_name || '—'}</td>
+    </tr>`;
+  }).join('');
+
+  el.innerHTML = `<table class="history-table">
+    <thead>
+      <tr>
+        <th>Classification</th>
+        <th>Confidence</th>
+        <th>URL</th>
+        <th>Timestamp (UTC)</th>
+        <th>Model</th>
+      </tr>
+    </thead>
+    <tbody>${rows}</tbody>
+  </table>`;
+}
+
+function filterHistory(filter) {
+  currentFilter = filter;
+  // Update button styles
+  ['all','ham','spam','phishing'].forEach(f => {
+    const btn = document.getElementById('filter' + f.charAt(0).toUpperCase() + f.slice(1));
+    if (btn) btn.className = 'filter-btn' + (f === filter ? ` active-${f}` : '');
+  });
+  const filtered = filter === 'all' ? allRecords : allRecords.filter(r => r.label === filter);
+  renderHistory(filtered);
+}
+
+async function clearHistory() {
+  if (!confirm('Delete all history records? This cannot be undone.')) return;
+  const res = await fetch('/api/history', {method:'DELETE'}).then(r => r.json()).catch(() => ({error:'failed'}));
+  if (res.error) { alert('Error: ' + res.error); return; }
+  allRecords = [];
+  renderHistory([]);
+}
+
+loadHistory();
+</script>
+{% endblock %}

@@ -1,0 +1,166 @@
+{% extends "index.html" %}
+{% set active_page = "about" %}
+{% block page_title %}About Project{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>About CipherShield</h1>
+  <p>Intelligent SMS Spam and Phishing Detection Using Machine Learning — M.Sc. Cybersecurity Academic Mini-Project</p>
+</div>
+
+<div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start">
+  <div>
+    <!-- Overview -->
+    <div class="card" style="margin-bottom:24px">
+      <div class="card-title"><i class="bi bi-lightbulb"></i> Project Overview</div>
+      <p style="margin-bottom:14px;font-size:14px;line-height:1.75">
+        CipherShield is a machine-learning-powered web application that analyses SMS messages and
+        classifies them as <strong>HAM</strong> (legitimate), <strong>SPAM</strong> (unsolicited promotional)
+        or <strong>PHISHING</strong> (deceptive messages attempting to steal sensitive information).
+      </p>
+      <p style="font-size:14px;line-height:1.75">
+        The system combines <strong>TF-IDF text classification</strong> with
+        <strong>URL structural analysis</strong> to provide contextual, evidence-based predictions —
+        without real-time internet lookups or paid threat-intelligence APIs.
+      </p>
+    </div>
+
+    <!-- How it works -->
+    <div class="card" style="margin-bottom:24px">
+      <div class="card-title"><i class="bi bi-diagram-3"></i> How It Works</div>
+
+      <div class="arch-step">
+        <div class="arch-num">1</div>
+        <div class="arch-content">
+          <h4>Dataset Loading</h4>
+          <p>UCI SMSSpamCollection (original) + modern_sms_dataset.csv (supplementary synthetic) are loaded, validated, deduplicated and merged.</p>
+        </div>
+      </div>
+      <div class="arch-step">
+        <div class="arch-num">2</div>
+        <div class="arch-content">
+          <h4>Text Preprocessing</h4>
+          <p>Messages are lower-cased, URL-tokenised, phone-number-tokenised, SMS-abbreviation-expanded, punctuation-removed and stop-word-filtered.</p>
+        </div>
+      </div>
+      <div class="arch-step">
+        <div class="arch-num">3</div>
+        <div class="arch-content">
+          <h4>TF-IDF Vectorization</h4>
+          <p>Up to 8,000 unigram+bigram features are extracted. Term frequency is sublinearly scaled to reduce dominance of high-frequency words.</p>
+        </div>
+      </div>
+      <div class="arch-step">
+        <div class="arch-num">4</div>
+        <div class="arch-content">
+          <h4>URL Feature Extraction</h4>
+          <p>10 structural URL features (IP hostname, URL shortener, suspicious chars, subdomain spoofing, punycode, etc.) are appended to the TF-IDF matrix.</p>
+        </div>
+      </div>
+      <div class="arch-step">
+        <div class="arch-num">5</div>
+        <div class="arch-content">
+          <h4>Machine Learning Classification</h4>
+          <p>Three models (Naive Bayes, Logistic Regression, Calibrated SVM) are trained and compared on macro F1-score. The best model is saved.</p>
+        </div>
+      </div>
+      <div class="arch-step">
+        <div class="arch-num">6</div>
+        <div class="arch-content">
+          <h4>Prediction &amp; Explanation</h4>
+          <p>The Flask API combines model probability scores with URL feature signals to produce a prediction, confidence score and human-readable explanation.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phishing vs Spam -->
+    <div class="card" style="margin-bottom:24px">
+      <div class="card-title"><i class="bi bi-question-circle"></i> Spam vs Phishing — What's the Difference?</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div style="background:var(--amber-light);border:1px solid #FDE68A;border-radius:var(--radius-sm);padding:16px">
+          <div style="font-weight:700;color:var(--amber);margin-bottom:8px"><i class="bi bi-exclamation-circle"></i> SPAM</div>
+          <ul style="font-size:13px;color:#78350F;padding-left:16px;line-height:1.75">
+            <li>Unsolicited bulk messages</li>
+            <li>Usually promotional or advertising</li>
+            <li>Annoying but rarely dangerous</li>
+            <li>May contain real brand links</li>
+            <li>No attempt to steal credentials</li>
+          </ul>
+        </div>
+        <div style="background:var(--red-light);border:1px solid #FECACA;border-radius:var(--radius-sm);padding:16px">
+          <div style="font-weight:700;color:var(--red);margin-bottom:8px"><i class="bi bi-shield-exclamation"></i> PHISHING</div>
+          <ul style="font-size:13px;color:#991B1B;padding-left:16px;line-height:1.75">
+            <li>Deceptive, targeted messages</li>
+            <li>Impersonates banks, govt, delivery</li>
+            <li>Steals OTPs, PINs, passwords</li>
+            <li>Often uses suspicious URLs</li>
+            <li>Creates urgency or fear</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Limitations -->
+    <div class="card" style="margin-bottom:24px">
+      <div class="card-title"><i class="bi bi-exclamation-triangle"></i> Limitations</div>
+      <ul style="font-size:13.5px;line-height:1.9;padding-left:18px;color:var(--text-muted)">
+        <li>Phishing class relies on the supplementary synthetic dataset — real-world labelled data would improve accuracy.</li>
+        <li>No real-time URL reputation checking or link following.</li>
+        <li>Cannot verify sender identity or confirm whether a bank message is genuine.</li>
+        <li>Short messages with no distinctive keywords may be misclassified.</li>
+        <li>Model does not understand context, intent or language nuances.</li>
+        <li>A trusted domain in the URL does not guarantee safety — phishing sites can spoof legitimate-looking links.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Sidebar info -->
+  <div>
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title"><i class="bi bi-people"></i> Team</div>
+      <div style="font-size:13.5px;line-height:1.75">
+        <div style="font-weight:600;margin-bottom:4px">Member 1 — ML &amp; Cybersecurity</div>
+        <div style="color:var(--text-muted);margin-bottom:12px;font-size:12.5px">
+          Dataset prep · URL analysis · Model training · Evaluation
+        </div>
+        <div style="font-weight:600;margin-bottom:4px">Member 2 — Web Development</div>
+        <div style="color:var(--text-muted);font-size:12.5px">
+          HTML/CSS/JS · Flask API · SQLite · Frontend testing
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title"><i class="bi bi-stack"></i> Technology Stack</div>
+      <div style="font-size:13px;line-height:2;color:var(--text-muted)">
+        <div><strong style="color:var(--text)">Frontend:</strong> HTML5 · CSS3 · Vanilla JS</div>
+        <div><strong style="color:var(--text)">Backend:</strong> Python · Flask</div>
+        <div><strong style="color:var(--text)">ML:</strong> scikit-learn · pandas · scipy</div>
+        <div><strong style="color:var(--text)">Database:</strong> SQLite</div>
+        <div><strong style="color:var(--text)">Algorithms:</strong> Naive Bayes · LR · SVM</div>
+        <div><strong style="color:var(--text)">Features:</strong> TF-IDF + URL analysis</div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:20px">
+      <div class="card-title"><i class="bi bi-shield-lock"></i> Privacy</div>
+      <p style="font-size:13px;color:var(--text-muted);line-height:1.75">
+        Messages are classified locally. No text is sent to external servers.
+        Only classification metadata (label, confidence, URL count) is stored
+        in the local SQLite database when history is enabled.
+      </p>
+    </div>
+
+    <div class="card">
+      <div class="card-title"><i class="bi bi-journals"></i> Documentation</div>
+      <div style="display:flex;flex-direction:column;gap:8px;font-size:13.5px">
+        <span style="color:var(--text-muted)"><i class="bi bi-file-earmark-text"></i> docs/project_report.md</span>
+        <span style="color:var(--text-muted)"><i class="bi bi-diagram-2"></i> docs/architecture.md</span>
+        <span style="color:var(--text-muted)"><i class="bi bi-patch-question"></i> docs/viva_questions.md</span>
+        <span style="color:var(--text-muted)"><i class="bi bi-clipboard-check"></i> docs/testing_report.md</span>
+        <span style="color:var(--text-muted)"><i class="bi bi-people"></i> docs/member_contributions.md</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

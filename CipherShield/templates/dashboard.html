@@ -1,0 +1,91 @@
+{% extends "index.html" %}
+{% set active_page = "dashboard" %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block content %}
+<!-- Welcome -->
+<div class="page-header">
+  <h1>Your SMS Security Dashboard</h1>
+  <p>Analyse messages and identify suspicious communication using machine learning.</p>
+</div>
+
+<!-- Model not trained warning -->
+<div class="model-warning" id="modelWarning" style="display:none">
+  <i class="bi bi-exclamation-triangle-fill"></i>
+  <div>
+    <strong>Model not trained yet.</strong>
+    Run <code>python retrain.py</code> in your terminal to train the model before analysing messages.
+  </div>
+</div>
+
+<!-- Stats grid -->
+<div class="stats-grid" id="statsGrid">
+  <div class="stat-card">
+    <div class="stat-icon blue"><i class="bi bi-envelope-check"></i></div>
+    <div class="stat-value" id="statTotal">—</div>
+    <div class="stat-label">Total Analysed</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon green"><i class="bi bi-check-circle"></i></div>
+    <div class="stat-value" id="statHam">—</div>
+    <div class="stat-label">HAM Detected</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon amber"><i class="bi bi-exclamation-circle"></i></div>
+    <div class="stat-value" id="statSpam">—</div>
+    <div class="stat-label">SPAM Detected</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon red"><i class="bi bi-shield-exclamation"></i></div>
+    <div class="stat-value" id="statPhishing">—</div>
+    <div class="stat-label">Phishing Detected</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon gray"><i class="bi bi-link-45deg"></i></div>
+    <div class="stat-value" id="statUrls">—</div>
+    <div class="stat-label">URLs Detected</div>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px">
+  <!-- Dataset overview -->
+  <div class="card">
+    <div class="card-title"><i class="bi bi-database"></i> Training Dataset Overview</div>
+    <div class="dist-bar" id="datasetDist">
+      <div style="color:var(--text-muted);font-size:13px">Loading dataset stats…</div>
+    </div>
+  </div>
+
+  <!-- Model status -->
+  <div class="card">
+    <div class="card-title"><i class="bi bi-cpu"></i> Model Status</div>
+    <div id="modelStatusCard">
+      <div style="color:var(--text-muted);font-size:13px">Checking model…</div>
+    </div>
+  </div>
+</div>
+
+<!-- Recent activity -->
+<div class="card">
+  <div class="card-title" style="margin-bottom:4px">
+    <i class="bi bi-clock-history"></i> Recent Analysis Activity
+    <span style="margin-left:auto">
+      <a href="/history" class="btn btn-outline btn-sm">View all</a>
+    </span>
+  </div>
+  <div id="recentActivity">
+    <div class="empty-state">
+      <i class="bi bi-inbox"></i>
+      <h3>No messages analysed yet</h3>
+      <p>Start by analysing a message to see activity here.</p>
+      <a href="/analyze" class="btn btn-primary" style="margin-top:14px">
+        <i class="bi bi-search"></i> Analyze Message
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,61 @@
+{
+  "label_names": [
+    "ham",
+    "spam",
+    "phishing"
+  ],
+  "label_map": {
+    "ham": 0,
+    "spam": 1,
+    "phishing": 2
+  },
+  "n_tfidf_features": 5870,
+  "n_url_features": 10,
+  "n_total_features": 5880,
+  "feature_names_sample": [
+    "07xx",
+    "07xx bonus",
+    "08718726270150gbpmtmsg18",
+    "08718726270150gbpmtmsg18 txtauction",
+    "100s",
+    "10am",
+    "10am7pm",
+    "10am7pm cost",
+    "10k",
+    "10p",
+    "10p per",
+    "10pmin",
+    "10ppm",
+    "10ppm tcs",
+    "11mths",
+    "11mths call",
+    "11mths update",
+    "125gift",
+    "125gift guaranteed",
+    "12hrs",
+    "url_has_url",
+    "url_has_ip",
+    "url_shortener",
+    "url_suspicious_chars",
+    "url_length_norm",
+    "url_trusted_domain",
+    "url_suspicious_subdomain",
+    "url_punycode_domain",
+    "url_multiple_urls",
+    "url_suspicious_scheme"
+  ],
+  "best_model": "MultinomialNB",
+  "macro_f1": 0.8453341252590608,
+  "tfidf_settings": {
+    "max_features": 8000,
+    "ngram_range": [
+      1,
+      2
+    ],
+    "min_df": 2,
+    "sublinear_tf": true
+  },
+  "train_size": 4220,
+  "test_size": 1056,
+  "random_seed": 42
+}

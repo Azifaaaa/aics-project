@@ -1,0 +1,95 @@
+{% extends "index.html" %}
+{% set active_page = "insights" %}
+{% block page_title %}Dataset Insights{% endblock %}
+
+{% block content %}
+<div class="page-header">
+  <h1>Dataset Insights</h1>
+  <p>Statistics derived from the actual training datasets. All synthetic records are clearly identified.</p>
+</div>
+
+<!-- Key numbers -->
+<div class="stats-grid" id="insightStats">
+  <div class="stat-card">
+    <div class="stat-icon blue"><i class="bi bi-database"></i></div>
+    <div class="stat-value" id="iTotal">—</div>
+    <div class="stat-label">Total Records</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon green"><i class="bi bi-check-circle"></i></div>
+    <div class="stat-value" id="iHam">—</div>
+    <div class="stat-label">HAM</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon amber"><i class="bi bi-exclamation-circle"></i></div>
+    <div class="stat-value" id="iSpam">—</div>
+    <div class="stat-label">SPAM</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon red"><i class="bi bi-shield-exclamation"></i></div>
+    <div class="stat-value" id="iPhishing">—</div>
+    <div class="stat-label">PHISHING</div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon gray"><i class="bi bi-link-45deg"></i></div>
+    <div class="stat-value" id="iUrls">—</div>
+    <div class="stat-label">URL-containing</div>
+  </div>
+</div>
+
+<div class="insight-grid">
+  <!-- Class distribution -->
+  <div class="card">
+    <div class="card-title"><i class="bi bi-pie-chart"></i> Class Distribution</div>
+    <div class="chart-wrap">
+      <canvas id="classChart"></canvas>
+    </div>
+  </div>
+
+  <!-- Source distribution -->
+  <div class="card">
+    <div class="card-title"><i class="bi bi-layers"></i> Dataset Source Split</div>
+    <div class="chart-wrap">
+      <canvas id="sourceChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Breakdown bars -->
+<div class="insight-grid">
+  <div class="card">
+    <div class="card-title"><i class="bi bi-archive"></i> Original UCI Dataset</div>
+    <div class="dist-bar" id="origDist">
+      <div style="color:var(--text-muted);font-size:13px">Loading…</div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:12px">
+      Source: UCI SMS Spam Collection. Labels: ham / spam only.
+    </p>
+  </div>
+
+  <div class="card">
+    <div class="card-title"><i class="bi bi-plus-square"></i> Supplementary Dataset</div>
+    <div class="dist-bar" id="suppDist">
+      <div style="color:var(--text-muted);font-size:13px">Loading…</div>
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin-top:12px">
+      Synthetic modern Indian SMS examples — clearly labelled as synthetic.
+      Not real collected messages.
+    </p>
+  </div>
+</div>
+
+<!-- Model performance -->
+<div class="card" style="margin-top:0">
+  <div class="card-title"><i class="bi bi-graph-up"></i> Model Evaluation Summary</div>
+  <div id="evalSummary">
+    <div style="color:var(--text-muted);font-size:13px">Loading…</div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+{% endblock %}
